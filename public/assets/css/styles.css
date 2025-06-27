@@ -1,0 +1,489 @@
+/* Tema Oscuro para CRUD de Productos */
+:root {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #3a3a3a;
+  --text-primary: #ffffff;
+  --text-secondary: #b8b8b8;
+  --accent-primary: #4a9eff;
+  --accent-secondary: #6c5ce7;
+  --warning-primary: #ffd358;
+  --warning-secondary: #fbc531;
+  --border-color: #404040;
+  --success-color: #00b894;
+  --danger-color: #fd79a8;
+  --warning-color: #fdcb6e;
+}
+
+/* Estilos generales */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, #1a1a1a 50%, #0a0a0a 100%);
+  color: var(--text-primary);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+}
+
+/* Header */
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Controles superiores */
+#filtro-orden {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+#filtro-orden:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.2);
+}
+
+#filtro-orden option {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* Botón de Cerrar Sesión Mejorado */
+#btn-logout {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+  border: none;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(238, 90, 82, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#btn-logout:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(238, 90, 82, 0.4);
+  background: linear-gradient(135deg, #ff5252, #e53935);
+}
+
+#btn-logout:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(238, 90, 82, 0.3);
+}
+
+/* Contenedor del formulario */
+.form-container {
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+}
+
+/* Grupos de formulario */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* Inputs */
+.form-group input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.2);
+  background-color: var(--bg-secondary);
+}
+
+.form-group input::placeholder {
+  color: #666;
+}
+
+/* Botón principal */
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  border: none!important;
+  color: white;
+  padding: 0.875rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(74, 158, 255, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(74, 158, 255, 0.4);
+  background: linear-gradient(135deg, #3d8bfd, #5a67d8);
+}
+
+/* Botón de exportación de productos a CSV*/
+.btn-warning {
+  background: linear-gradient(135deg, var(--warning-primary), var(--warning-secondary));
+  border: none !important;
+  color: white !important;
+  padding: 0.875rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 4px 16px rgba(251, 197, 49, 0.18);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  margin-left: 1rem;
+}
+
+.btn-warning::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transition: left 0.5s;
+  pointer-events: none;
+}
+
+.btn-warning:hover::before {
+  left: 100%;
+}
+
+.btn-warning:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 24px rgba(251, 197, 49, 0.28);
+  background: linear-gradient(135deg, #ffe082, #ffd358 60%, #fbc531 100%);
+  color: #111 !important;
+}
+
+.btn-warning:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px rgba(251, 197, 49, 0.15);
+}
+
+/* Select dentro del sweet alert para exportar */
+.swal2-select#swal-formato {
+  width: 200px !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+/* Contenedor de tabla */
+.table-container {
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+  overflow-x: auto;
+  text-align: center;
+}
+
+/* Tabla */
+#tabla-productos {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+#tabla-productos thead th {
+  background: linear-gradient(135deg, var(--bg-tertiary), #454545);
+  color: var(--text-primary);
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid var(--border-color);
+  position: relative;
+  text-align: center;
+}
+
+#tabla-productos tbody td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+#tabla-productos tbody tr:hover {
+  background-color: var(--bg-tertiary);
+}
+
+#tabla-productos tbody tr:hover td {
+  color: var(--text-primary);
+}
+
+/* Mensaje vacío */
+.empty-message td {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  padding: 2rem;
+}
+
+/* Botones de acción mejorados */
+.btn-edit {
+  background: linear-gradient(135deg, #17a2b8, #138496);
+  border: none;
+  color: white;
+  padding: 0.625rem 0.875rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  box-shadow: 0 2px 8px rgba(23, 162, 184, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-edit::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-edit:hover::before {
+  left: 100%;
+}
+
+.btn-edit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(23, 162, 184, 0.4);
+  background: linear-gradient(135deg, #20c997, #17a2b8);
+}
+
+.btn-edit:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(23, 162, 184, 0.3);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  border: none;
+  color: white;
+  padding: 0.625rem 0.875rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-danger::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-danger:hover::before {
+  left: 100%;
+}
+
+.btn-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
+  background: linear-gradient(135deg, #e74c3c, #dc3545);
+}
+
+.btn-danger:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+}
+
+/* Iconos de Bootstrap para los botones */
+.btn-edit svg,
+.btn-danger svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* Contenedor de botones de acción */
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Tooltip para botones */
+.btn-edit[title]:hover::after,
+.btn-danger[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  z-index: 1000;
+  margin-bottom: 5px;
+}
+
+.btn-edit[title]:hover::before,
+.btn-danger[title]:hover::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+}
+
+/* Paginación */
+#paginacion {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+#paginacion button {
+  background-color: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#paginacion button:hover {
+  background-color: var(--accent-primary);
+  color: white;
+  border-color: var(--accent-primary);
+}
+
+#paginacion button.active {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: white;
+  border-color: var(--accent-primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  #btn-logout {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-bottom: 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-container {
+    padding: 1.5rem;
+  }
+
+  .table-container {
+    padding: 1rem;
+  }
+
+  #tabla-productos {
+    font-size: 0.85rem;
+  }
+
+  #tabla-productos thead th,
+  #tabla-productos tbody td {
+    padding: 0.75rem 0.5rem;
+  }
+}
